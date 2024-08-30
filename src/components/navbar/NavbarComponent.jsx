@@ -38,7 +38,7 @@ const NavbarComponent = () => {
     const drawer = (
         <Box sx={{ textAlign: 'center' }}>
             <Typography variant="h6" sx={{ my: 2 }}>
-                My Application
+                Demo
             </Typography>
             <List>
                 {dropdowns.map((dropdown, index) => (
