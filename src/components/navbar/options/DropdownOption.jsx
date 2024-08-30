@@ -1,8 +1,10 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
-import { Menu, MenuItem, Button, ListItem, ListItemText, Collapse, Divider } from '@mui/material';
+import { Menu, MenuItem, Button, ListItemButton, ListItemText, Collapse, Divider } from '@mui/material';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 
+// eslint-disable-next-line react/prop-types
 const DropdownWithDividers = ({ label, options, isMobile, icon }) => {
     const [anchorEl, setAnchorEl] = useState(null);
     const [open, setOpen] = useState(false);
@@ -22,6 +24,7 @@ const DropdownWithDividers = ({ label, options, isMobile, icon }) => {
     };
 
     const renderOptionsWithDividers = () => {
+        // eslint-disable-next-line react/prop-types
         return options.map((option, index) => {
             if (option === 'hr') {
                 return <Divider key={index} />;
@@ -38,11 +41,11 @@ const DropdownWithDividers = ({ label, options, isMobile, icon }) => {
     if (isMobile) {
         return (
             <>
-                <ListItem button onClick={handleClick}>
+                <ListItemButton onClick={handleClick}>
                     {icon}
                     <ListItemText primary={label} />
                     {open ? <ExpandLess /> : <ExpandMore />}
-                </ListItem>
+                </ListItemButton>
                 <Collapse in={open} timeout="auto" unmountOnExit>
                     {renderOptionsWithDividers()}
                 </Collapse>
