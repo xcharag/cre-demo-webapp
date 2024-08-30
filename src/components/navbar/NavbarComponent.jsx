@@ -68,7 +68,7 @@ const NavbarComponent = () => {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        My Application
+                        Demo
                     </Typography>
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                         {dropdowns.map((dropdown, index) => (
