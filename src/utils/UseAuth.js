@@ -1,10 +1,10 @@
 import { getUserData } from "./Api.js";
 import {useState} from "react";
 
-const BASE_URL = 'http://localhost:3001';
+const BASE_URL = 'https://cooperitvaqrapi-accafe8b1ea7.herokuapp.com';
 
 const authenticateUser = async (username, password) => {
-    const response = await fetch(`${BASE_URL}/auth`, {
+    const response = await fetch(`${BASE_URL}/login`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
