@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AppBar, Toolbar, Typography, Box, IconButton, Drawer, List } from '@mui/material';
+import {AppBar, Toolbar, Typography, Box, IconButton, Drawer, List, Button, Divider} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import DropdownWithDividers from './options/DropdownOption.jsx';
 import PersonIcon from '@mui/icons-material/Person';
@@ -7,9 +7,12 @@ import BusinessIcon from '@mui/icons-material/Business';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import InventoryIcon from '@mui/icons-material/Inventory';
 import BuildIcon from '@mui/icons-material/Build';
+import LogoutIcon from '@mui/icons-material/Logout';
+import {useNavigate} from "react-router-dom";
 
 const NavbarComponent = () => {
     const [mobileOpen, setMobileOpen] = useState(false);
+    const navigate = useNavigate();
 
     const dropdowns = [
         { label: 'Clientes', options: ['Datos de Clientes', 'Listado de Clientes', 'Kardex de Clientes', 'Pagos por Clientes', 'Deudas por Clientes'], icon: <PersonIcon sx={{mr:1}}/> },
@@ -28,11 +31,22 @@ const NavbarComponent = () => {
                 'Salida del Almacen','Modificar Salida','Consulta de Salidas','hr',
                 'TOMA DE INVENTARIO','hr',
                 'Lista de Precios','Estado de Inventario','Detalle de Ingresos','Resumen de Ingresos','Detalles de Salidas x Proyecto','Resumen de Inventario','Salidas por Proyecto'], icon: <InventoryIcon sx={{mr:1}}/> },
-        { label: 'Mantenimiento', options: ['Cambiar Clave de acceso','Definir Mes de trabajo','Dolar del dia','Reindexar la base de datos','Cerrar la gestion actual','Parametros del sistema','Usuarios','Inicializar el sistema','Datos de Empresa','Informacion del Sistema'], icon: <BuildIcon sx={{mr:1}}/> },
+        { label: 'Mantenimiento', options: ['Cambiar Clave de acceso','Definir Mes de trabajo','Dolar del dia','Reindexar la base de datos','Cerrar la gestion actual','Parametros del sistema','Usuarios','Inicializar el sistema','Datos de Empresa','Informacion del Sistema'], icon: <BuildIcon sx={{mr:1}}/>,
+        onSelect: (option) => {
+            console.log('Option selected:', option);
+            if (option === 'Usuarios') {
+                navigate('/usuarios');
+            }
+        } },
     ];
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
+    };
+
+    const handleLogout = () => {
+        localStorage.clear();
+        navigate('/');
     };
 
     const drawer = (
@@ -48,9 +62,15 @@ const NavbarComponent = () => {
                         options={dropdown.options}
                         isMobile={true}
                         icon={dropdown.icon}
+                        onSelect={dropdown.onSelect}
                     />
                 ))}
             </List>
+            <Divider sx={{ my: 1 }} />
+            <Button color="inherit" onClick={handleLogout}>
+                <LogoutIcon sx={{mr:1}}/>
+                Cerrar Sesión
+            </Button>
         </Box>
     );
 
@@ -78,8 +98,13 @@ const NavbarComponent = () => {
                                 options={dropdown.options}
                                 isMobile={false}
                                 icon={dropdown.icon}
+                                onSelect={dropdown.onSelect}
                             />
                         ))}
+                        <Button color="inherit" onClick={handleLogout}>
+                            <LogoutIcon sx={{mr:1}}/>
+                            Cerrar Sesión
+                        </Button>
                     </Box>
                 </Toolbar>
             </AppBar>

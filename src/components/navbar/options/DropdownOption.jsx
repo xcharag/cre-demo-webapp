@@ -5,7 +5,7 @@ import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 
 // eslint-disable-next-line react/prop-types
-const DropdownWithDividers = ({ label, options, isMobile, icon }) => {
+const DropdownWithDividers = ({ label, options, isMobile, icon, onSelect }) => {
     const [anchorEl, setAnchorEl] = useState(null);
     const [open, setOpen] = useState(false);
 
@@ -30,7 +30,10 @@ const DropdownWithDividers = ({ label, options, isMobile, icon }) => {
                 return <Divider key={index} />;
             } else {
                 return (
-                    <MenuItem key={index} onClick={handleClose} sx={isMobile ? { pl: 4 } : null}>
+                    <MenuItem key={index} onClick={() => {
+                        if (onSelect) onSelect(option);
+                        handleClose();
+                    }} sx={isMobile ? { pl: 4 } : null}>
                         {option}
                     </MenuItem>
                 );
