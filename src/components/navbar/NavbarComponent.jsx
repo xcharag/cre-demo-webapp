@@ -31,7 +31,7 @@ const NavbarComponent = () => {
                 'Salida del Almacen','Modificar Salida','Consulta de Salidas','hr',
                 'TOMA DE INVENTARIO','hr',
                 'Lista de Precios','Estado de Inventario','Detalle de Ingresos','Resumen de Ingresos','Detalles de Salidas x Proyecto','Resumen de Inventario','Salidas por Proyecto'], icon: <InventoryIcon sx={{mr:1}}/> },
-        { label: 'Mantenimiento', options: ['Cambiar Clave de acceso','Definir Mes de trabajo','Dolar del dia','Reindexar la base de datos','Cerrar la gestion actual','Parametros del sistema','Usuarios','Inicializar el sistema','Datos de Empresa','Informacion del Sistema'], icon: <BuildIcon sx={{mr:1}}/>,
+        { label: 'Mantenimiento', options: ['Cambiar Clave de acceso','Definir Mes de trabajo','Dolar del dia','Cerrar la gestion actual','Parametros del sistema','Usuarios','Datos de Empresa','Informacion del Sistema'], icon: <BuildIcon sx={{mr:1}}/>,
         onSelect: (option) => {
             console.log('Option selected:', option);
             if (option === 'Usuarios') {

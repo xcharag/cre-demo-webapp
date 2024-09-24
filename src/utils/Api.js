@@ -80,3 +80,50 @@ export const getUsers = async () => {
         throw error;
     }
 }
+
+export const updateUser = async (user) => {
+    try {
+        delete user.confirmPassword;
+        if (user.password === '') {
+            user.password = null;
+        }
+        const response = await fetch(`${BASE_URL}/editUser`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+            },
+            body: JSON.stringify(user),
+        });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        return response.json();
+    } catch (error) {
+        console.error('Error updating user:', error);
+        throw error;
+    }
+}
+
+export const deleteUser = async (userId) => {
+    try {
+        const response = await fetch(`${BASE_URL}/deleteUser/${userId}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        return response;
+    } catch (error) {
+        console.error('Error deleting user:', error);
+        throw error;
+    }
+}
