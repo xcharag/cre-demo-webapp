@@ -40,18 +40,18 @@ const Login = () => {
                 }}
             >
                 <img
-                    src="https://cloud-cube-us2.s3.amazonaws.com/g8gx1ba6gzvt/public/cooperativalogo.png"
+                    src="https://i.ibb.co/mtHLLfD/Logo4.png"
                     alt="Logo"
-                    style={{ height: '200px' }}
+                    style={{height: '200px'}}
                 />
                 <Typography
                     variant="h4"
-                    style={{ color: 'rgb(59, 187, 85)' }}
+                    style={{color: 'rgb(59, 187, 85)'}}
                     gutterBottom>
                     Inicio de Sesion
                 </Typography>
                 {error && <Typography color="error">{error}</Typography>}
-                <form onSubmit={handleSubmit} style={{ width: '100%' }}>
+                <form onSubmit={handleSubmit} style={{width: '100%'}}>
                     <TextField
                         variant="outlined"
                         margin="normal"
@@ -75,7 +75,7 @@ const Login = () => {
                         fullWidth
                         variant="contained"
                         color="primary"
-                        style={{ marginTop: '20px' }}
+                        style={{marginTop: '20px'}}
                     >
                         Login
                     </Button>
